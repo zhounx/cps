@@ -1,0 +1,232 @@
+.image{
+	width: 50upx;
+	height: 50upx;
+}
+
+.learning-box{
+	width: 750upx;
+	height: 409upx;
+	background: #009BFD;
+	box-shadow: 0upx 10upx 30upx 0upx rgba(175, 188, 199, 0.1);
+	padding-top: 10upx;
+	position: relative;
+	.evaluation-box{
+		// padding-right: 30upx;
+		.image-1{
+			width: 10upx;
+			height: 14upx;
+			margin-left: 13upx;
+		}
+		.evaluation-text{
+			color: #00EAFD;
+			font-size: 24upx;
+			line-height: 66upx;
+			padding-left: 43upx;
+			position: relative;
+			
+			width: 465upx;
+			height: 66upx;
+			background: #0084E5;
+			border-radius: 33upx 0upx 0upx 33upx;
+		}
+	}
+	.learning-situation{
+		width: 690upx;
+		height: 375upx;
+		background: #FFFFFF;
+		box-shadow: 0upx 10upx 30upx 0upx rgba(175, 188, 199, 0.1);
+		border-radius: 30upx;
+		margin: 0 auto;
+		position: absolute;
+		top: 100upx;
+		left: 30upx;
+		.time-box{
+			height: 186upx;
+			border-bottom: 1upx solid #F5F5F5;
+			margin: 0 5% 46upx;
+			box-sizing: content-box;
+			.time-item{
+				width: 50%;
+				height: 100%;
+				padding-bottom: 68upx;
+				.label{
+					width: 100%;
+					text-align: center;
+					height: 24upx;
+					font-size: 26upx;
+					font-weight: 400;
+					color: #6E7689;
+					margin-top: 42upx;
+				}
+				.value{
+					width: 100%;
+					text-align: center;
+					height: 44upx;
+					font-size: 30upx;
+					font-family: 975Maru SC;
+					font-weight: bold;
+					color: #1E263D;
+					// margin: 42upx auto 28upx;
+					.value-text{
+						font-size: 60upx;
+					}
+				}
+			}
+		}
+		.progress-text {
+			display: inline-block;
+			width: 100%;
+			margin-bottom: 33upx;
+			text-align: left;
+			font-size: 28upx;
+			color: #6E7689;
+			.learned {
+				margin-left: 10upx;
+				font-size: 30upx;
+				color: #0090FE;
+			}
+			.total {
+				margin-left: 10upx;
+				font-size: 30upx;
+				color: #1E263D;
+			}
+		}
+		.progress-text, .progress-chart{
+			padding: 0 41upx;
+		}
+	}
+}
+
+
+.unlearning-box{
+	width: 750upx;
+	height: 163upx;
+	background: #009BFD;
+	box-shadow: 0upx 10upx 30upx 0upx rgba(175, 188, 199, 0.1);
+	position: relative;
+	margin-bottom: 200upx;
+	.unlearning-shadow{
+		width: 690upx;
+		height: 300upx;
+		background: #FFFFFF;
+		box-shadow: 0upx 10upx 30upx 0upx rgba(175, 188, 199, 0.1);
+		border-radius: 30upx;
+		position: absolute;
+		top: 60upx;
+		left: 30upx;
+		.text-1{
+			font-size: 34upx;
+			font-family: 975Maru SC;
+			font-weight: 400;
+			color: #1E263D;
+			line-height: 40upx;
+			margin-bottom: 16upx;
+			margin-top: 50upx;
+		}
+		.text-2{
+			font-size: 28upx;
+			font-family: 975Maru SC;
+			font-weight: 400;
+			color: #A5A7AD;
+			line-height: 40upx;
+			margin-bottom: 50upx;
+		}
+		.toEvaluation-btn{
+			@include  lighter-btn(260upx, 60upx);
+		}
+	}
+}
+
+
+.course-box{
+	margin: 80upx auto 35upx;
+	padding: 0 30upx;
+	.select-box{
+		height: 135upx;
+		background: #F8F8F8;
+		.select-list{
+			width: 438upx;
+			.select-item{
+				margin-right: 41upx;
+				position: relative;
+				.mask{
+					position: fixed;
+					top: 0;
+					left: 0;
+					background-color: transparent;
+					width: 100vw;
+					height: 100vh;
+					z-index: 999;
+				}
+				.select-wrap{
+					position: absolute;
+					left: 0;
+					top: 105upx;
+					z-index: 1000;
+				}
+				&:first-child{
+					width: 200upx;
+				}
+				.subject-text{
+					font-size: 40upx;
+					font-weight: bold;
+					color: #1E263D;
+				}
+				.grade-text{
+					font-size: 28upx;
+					font-weight: 400;
+					color: #6E7689;
+				}
+				.image-1{
+					width: 17upx;
+					height: 9upx;
+					margin-left: 10upx;
+				}
+			}
+		}
+		.switch-item{
+			.tab-btn{
+				width: 120upx;
+				height: 44upx;
+				line-height: 44upx;
+				background: #EFEFEF;
+				border-radius: 22upx;
+				font-size: 26upx;
+				font-weight: 400;
+				color: #A5A7AD;
+				text-align: center;
+				margin-left: 12upx;
+				&.active{
+					background: #DFEDF9;
+					color: #0090FE;
+				}
+			}
+		}
+	}
+	.course-list{
+		margin-top: 5upx;
+	}
+}
+
+
+.eva-select-box{
+	padding: 15upx 0;
+	width: 220upx;
+	background: #FFFFFF;
+	box-shadow: 0upx 10upx 30upx 0upx rgba(175, 188, 199, 0.2);
+	border-radius: 20upx;
+	min-height: 130upx;
+	.select-option{
+		width: 220upx;
+		height: 100upx;
+		line-height: 100upx;
+		font-size: 30upx;
+		font-family: 975Maru SC;
+		font-weight: 400;
+		text-align: center;
+		color: #1E263D;
+		&.active{
+			color: #0090FE;
+		}
+	}
+}

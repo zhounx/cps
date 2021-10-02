@@ -1,0 +1,71 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		
+		{
+			"path": "pages/tabbar/Collection",
+			"style": {
+				"navigationBarTitleText": "创意收集区"
+			}
+		},
+		{
+			"path": "pages/tabbar/Action",
+			"style": {
+				"navigationBarTitleText": "行动区"
+			}
+		},
+		{
+			"path": "pages/tabbar/Todo",
+			"style": {
+				"navigationBarTitleText": "安排表"
+			}
+		},
+		{
+			"path": "pages/tabbar/Later",
+			"style": {
+				"navigationBarTitleText": "以后行动区"
+			}
+		}
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "首页",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#F5F6F9"
+	},
+	"tabBar": {
+		"color": "#C0C4CC",
+		"selectedColor": "#409be8",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/tabbar/Collection",
+				"iconPath": "static/user.png",
+				"selectedIconPath": "static/user-active.png",
+				"text": "收集"
+			},
+			{
+				"pagePath": "pages/tabbar/Action",
+				"iconPath": "static/learning.png",
+				"selectedIconPath": "static/learning-active.png",
+				"text": "行动"
+			},
+			{
+				"pagePath": "pages/tabbar/Todo",
+				"iconPath": "static/homework.png",
+				"selectedIconPath": "static/homework-active.png",
+				"text": "安排"
+			},
+			{
+				"pagePath": "pages/tabbar/Later",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home-active.png",
+				"text": "以后"
+			}
+		]
+	}
+}

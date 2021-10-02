@@ -1,0 +1,51 @@
+@mixin box-shadow ($rx, $ry, $dir, $mx, $clr) {
+  -webkit-box-shadow:$rx $ry $dir $mx $clr;
+  -ms-box-shadow:$rx $ry $dir $mx $clr;
+  -o-box-shadow:$rx $ry $dir $mx $clr;
+  box-shadow:$rx $ry $dir $mx $clr;
+}
+@mixin font-size-color ($rx, $ry) {
+	font-size: $rx;
+	color: $ry;
+}
+.subject{
+	border-radius: 12upx 4upx 12upx 4upx;
+	font-size: 22upx;
+	color: #fff;
+	padding: 3upx 10upx;
+	text-align: center;
+	&.chinese{
+		background-color: #1BCE9E;
+	}
+	&.math{
+		background-color: #FFB34D;
+	}
+	&.english{
+		background-color: #4D9BE8;
+	}
+}
+
+.demo-wrap-compoents{
+	background-color: #fff;
+	padding: 40upx 30upx;
+	border-radius: 18upx;
+	margin-bottom: 30upx;
+	box-shadow: $box-shadow;
+}
+
+.bookName{
+	max-width: 400upx;
+	@include font-size-color(32upx, #000);
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	word-break: break-all;
+	margin-bottom: 20upx;
+}
+.chapterName{
+	@include font-size-color(26upx, #666666);
+	margin-bottom: 20upx;
+}

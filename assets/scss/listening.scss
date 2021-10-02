@@ -1,0 +1,361 @@
+/**
+ * 播放组件
+   */
+.play-wrap{
+	background: #F6FAFE;
+	.wrap-name{
+		padding-left: 30upx;
+		width: 100%;
+		height: 108upx;
+		line-height: 108upx;
+		font-size: 34upx;
+		font-weight: 400;
+		color: #1E263D;
+	}
+	.play-box{
+		padding: 40upx 30upx;
+		margin: 0 30upx;
+		background: #FFFFFF;
+		box-shadow: 0px 10px 10px 0px rgba(175, 188, 199, 0.1);
+		border-radius: 10px;
+		filter: blur(0px);
+		height: 100%;
+		flex: 1;
+		.title{
+			font-size: 36upx;
+			font-weight: 400;
+			color: #1E263D;
+			line-height: 42upx;
+			margin-bottom: 40upx;
+		}
+		.sub-title{
+			font-size: 30upx;
+			font-weight: 400;
+			color: #7F848B;
+			line-height: 43upx;
+			text-indent: 47upx;
+			border-bottom: 1upx solid #eeeeee;
+			padding-bottom: 20upx;
+		}
+		.play-gif-box{
+			width: 690upx;
+			height: 560upx;
+			position: relative;
+			margin: 38upx auto 0;
+			margin-left: -30upx;
+			.image-1{
+				width: 690upx;
+				height: 560upx;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: inline-block;
+			}
+			.image-2{
+				width: 125upx;
+				height: 80upx;
+				position: absolute;
+				top: 233upx;
+				left: 283upx;
+				z-index: 10;
+			}
+			.image-5{
+				width: 284upx;
+				height: 284upx;
+			}
+		}
+		.play-status-text{
+			font-size: 36upx;
+			font-family: 975MaruSC-Regular, 975MaruSC;
+			font-weight: 400;
+			color: #666666;
+			line-height: 76upx;
+			letter-spacing: 1upx;
+			margin: 19upx auto 0;
+		}
+		.play-status-text-2{
+			font-size: 28upx;
+			font-family: 975MaruSC-Regular, 975MaruSC;
+			font-weight: 400;
+			color: #A5A7AC;
+			line-height: 33upx;
+			letter-spacing: 1upx;
+			margin: 19upx auto 30upx;
+		}
+		.footer-box{
+			margin-bottom: 109upx;
+			.footer-replay{
+				@include darker-btn(368upx, 80upx);
+				margin: 65upx auto;
+			}
+		}
+	}
+}        
+
+/**
+ * 录音组件
+   */
+.record-wrap{
+	background: #F6FAFE;
+	.wrap-name{
+		padding-left: 30upx;
+		width: 100%;
+		height: 108upx;
+		line-height: 108upx;
+		font-size: 34upx;
+		font-weight: 400;
+		color: #1E263D;
+	}
+	.record-box{
+		padding: 40upx 30upx;
+		margin: 0 30upx;
+		background: #FFFFFF;
+		box-shadow: 0px 10px 10px 0px rgba(175, 188, 199, 0.1);
+		border-radius: 10px;
+		filter: blur(0px);
+		height: 100%;
+		flex: 1;
+		.title{
+			width: 100%;
+			height: 100upx;
+			position: relative;
+			padding-bottom: 40upx;
+			border-bottom: 1upx solid #eeeeee;
+			.view-text{
+				width: 100%;
+				font-size: 36upx;
+				font-weight: 400;
+				color: #1E263D;
+				line-height: 100upx;
+				letter-spacing: 2upx;
+				text-align: center;
+				padding-left: 39upx;
+			}
+			.cancle-btn{
+				width: 76upx;
+				height: 42upx;
+				font-size: 32upx;
+				font-weight: 400;
+				color: #A5A7AC;
+				line-height: 42upx;
+				letter-spacing: 1upx;
+			}
+		}
+		.record-gif-box{
+			width: 690upx;
+			height: 560upx;
+			position: relative;
+			margin: 38upx auto 0;
+			margin-left: -30upx;
+			.image-1{
+				width: 690upx;
+				height: 560upx;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: inline-block;
+			}
+			.image-2{
+				width: 65upx;
+				height: 92upx;
+				position: absolute;
+				top: 233upx;
+				left: 313upx;
+				z-index: 10;
+			}
+			.image-5{
+				width: 284upx;
+				height: 284upx;
+			}
+		}
+		.record-status-text{
+			font-size: 36upx;
+			font-family: 975MaruSC-Regular, 975MaruSC;
+			font-weight: 400;
+			color: #666666;
+			line-height: 76upx;
+			letter-spacing: 1upx;
+			margin: 19upx auto 0;
+		}
+		.record-status-text-2{
+			font-size: 28upx;
+			font-family: 975MaruSC-Regular, 975MaruSC;
+			font-weight: 400;
+			color: #A5A7AC;
+			line-height: 33upx;
+			letter-spacing: 1upx;
+			margin: 19upx auto 30upx;
+		}
+	}
+}        
+
+
+
+/**
+ * 录音组件
+   */
+.analyse-wrap{
+	background: #F6FAFE;
+	.wrap-name{
+		padding-left: 30upx;
+		width: 100%;
+		height: 108upx;
+		line-height: 108upx;
+		font-size: 34upx;
+		font-weight: 400;
+		color: #1E263D;
+	}
+	.analyse-box{
+		width: 690upx;
+		// height: 908upx;
+		background: #FFFFFF;
+		box-shadow: 0upx 10upx 10upx 0upx rgba(175, 188, 199, 0.1);
+		border-radius: 10upx;
+		filter: blur(0upx);
+		padding: 0 30upx 40upx;
+		margin: 0 30upx;
+		.header-box{
+			height: 142upx;
+			width: 100%;
+			border-bottom: 1upx solid #EEEEEE;
+			.header-text{
+				font-size: 36upx;
+				font-weight: 400;
+				color: #1E263D;
+				line-height: 42upx;
+			}
+			.header-btn-box{
+				font-size: 23upx;
+				font-weight: 400;
+				color: #7F848B;
+				line-height: 27upx;
+				.image-1{
+					width: 42upx;
+					height: 42upx;
+					margin-right: 10upx;
+				}
+			}
+		}
+		.article-box{
+			font-size: 30upx;
+			font-weight: 400;
+			color: #1E263D;
+			line-height: 42upx;
+			margin: 49upx 32upx 69upx;
+			text{
+				margin-right: 10upx;
+			}
+			.right{
+				color: #74B731;
+			}
+			.error{
+				color: #FC6C5C;
+			}
+		}
+		.record-again-box{
+			width: 186upx;
+			margin: 0 auto;
+			.image-2{
+				width: 186upx;
+				height: 186upx;
+				margin-bottom: 19upx;
+			}
+			.again-text{
+				font-size: 36upx;
+				font-weight: 400;
+				color: #1E263D;
+				line-height: 76upx;
+				letter-spacing: 1upx;
+			}
+		}
+	}
+	.result-box{
+		width: 690upx;
+		// height: 908upx;
+		background: #FFFFFF;
+		box-shadow: 0upx 10upx 10upx 0upx rgba(175, 188, 199, 0.1);
+		border-radius: 10upx;
+		filter: blur(0upx);
+		padding: 0 30upx 40upx;
+		margin: 30upx;
+		.header-box{
+			height: 142upx;
+			width: 100%;
+			border-bottom: 1upx solid #EEEEEE;
+			.header-text{
+				font-size: 36upx;
+				font-weight: 400;
+				color: #1E263D;
+				line-height: 42upx;
+			}
+			.header-btn-box{
+				font-size: 36upx;
+				font-weight: 400;
+				color: #9A9A9A;
+				.btn-text-1{
+					margin-right: 20upx;
+				}
+				.btn-text-2{
+					font-size: 100upx;
+					font-weight: bold;
+					color: #FC6D5C;
+					margin-right: 10upx
+				}
+				.btn-text-3{
+					color: #FC6D5C;
+				}
+			}
+		}
+		.target-box{
+			padding: 59upx 0;
+		}
+	}
+}
+
+
+.target-item-box{
+	min-height: 189upx;
+	background: #EFFAFF;
+	border-radius: 30upx;
+	margin-bottom: 30upx;
+	padding: 30upx 40upx;
+	.title{
+		font-size: 34upx;
+		font-weight: 400;
+		color: #7D8289;
+		line-height: 41upx;
+		letter-spacing: 1upx;
+		margin-bottom: 10upx;
+	}
+	.progress-box{
+		margin-bottom: 10upx;
+		.process{
+			width: 524upx;
+			margin-right: 10upx;
+		}
+		.progress-text{
+			font-size: 36upx;
+			font-weight: bold;
+			color: #63CFFF;
+			line-height: 42upx;
+			letter-spacing: 1upx;
+		}
+	}
+	.progress-detail-box{
+		font-size: 24upx;
+		font-weight: 400;
+		color: #7D8289;
+		line-height: 28upx;
+		.progress-detail-item{
+			margin-right: 18upx;
+		}
+		.right{
+			color: #74B731;
+		}
+		.error{
+			color: #FC6C5C;
+		}
+	}
+}
+
+

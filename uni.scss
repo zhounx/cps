@@ -1,0 +1,336 @@
+/* uni.scss */
+// @import 'uview-ui/theme.scss';
+@import 'assets/scss/flex.scss';
+
+/* 主色调-蓝色 */
+$base-color: #409be8;
+$light-red: #FFECEB;
+
+/* 文字尺寸 */
+$font-sm: 20upx;
+$font-middle-sm: 22upx;
+$font-base: 30upx;
+$font-middle-lg: 34upx;
+$font-lg: 36upx;
+/* 边框颜色 */
+$border-color-dark: #dcdfe6;
+$border-color-base: #f5f5f5;
+$border-color-light: #ebeef5;
+/* 字体颜色 */
+$font-color-dark: #000;
+$font-color-normal: #666;
+$font-color-light: rgba(0, 0, 0, 0.3);
+
+/* 行为相关颜色 */
+$uni-color-primary: #009BFD;
+$uni-color-success: #3dc08d;
+$uni-color-warning: #fc6c5c;
+$uni-color-error: #e96a64;
+/* 默认背景色 */
+$bg-color-base: #EEEFEF;
+$bg-blue: #0090ff;
+$bg-blue-darker: #0087FF;
+
+$black: #1E263D;
+$yellow: rgb(255,161,51);
+$light-yellow: rgb(255,245,234);
+$green: #07C160;
+$light-green: #E6F9EF;;
+$light-blue: #E5F4FF;
+$red: #FD7A4E;
+$light-red: #FFF1ED;
+$gray: #7F848B;
+$light-gray: #F2F2F3;
+
+
+/*按钮*/
+$button-border-radios:70upx;
+$button-background:linear-gradient(90deg,rgba(0,155,253,1) 0%,rgba(0,135,255,1) 100%);
+
+$common-shadow: 0px 10px 10px 0px rgba(175, 188, 199, 0.1);
+$box-shadow: 0 10upx 30upx 0 rgba(175,188,199,0.1);
+*{
+	vertical-align: middle;
+	font-family: "975Maru SC", "Microsoft Yahei", "NSimSun";
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-x:hidden;
+	// text-align: center;
+	> div,
+	> view,
+	> span,
+	> text,
+	> swiper,
+	> section {
+		width: 100%;
+	}
+	font-size: $font-base;
+	position: relative;
+	color: $black;
+}
+
+/* 弹性盒模型 */
+.flex {
+	display: flex;
+}
+.space-around {
+	justify-content: space-around;
+}
+.space-between {
+	justify-content: space-between;
+}
+.flex-end {
+	justify-content: flex-end;
+}
+.flex-row-reverse {
+	flex-direction: row-reverse;
+}
+.flex-col {
+	flex-direction: column;
+}
+.flex-wrap {
+	flex-wrap: wrap;
+}
+.flex-center {
+	align-items: center;
+}
+.justify-center {
+	justify-content: center;
+}
+.op-0 {
+	opacity: 0;
+}
+.bold {
+	font-weight: bold;
+}
+.w-100 {
+	width: 100%;
+}
+.h-100 {
+	height: 100%;
+}
+.wh-100 {
+	width: 100%;
+	height: 100%;
+}
+.pos-r {
+	position: relative;
+}
+.pos-a {
+	position: absolute;
+}
+.border-b {
+	border-top: 1px solid $border-color-base;
+}
+
+.common-btn {
+	background: $base-color;
+	color: #fff;
+	text-align: center;
+	border-radius: 18upx;
+	font-size: $font-lg;
+}
+
+@mixin red-btn($width, $height, $fontSize){
+	width: $width;
+	height: $height;
+	background: linear-gradient(-90deg, #FB0001 0%, #FF5E33 99%);
+	border-radius: $height;
+	color: #fff;
+	text-align: center;
+	line-height: $height;
+	font-size: $fontSize;
+}
+@mixin darker-btn($width, $height){
+	width: $width;
+	height: $height;
+	background: $base-color;
+	border-radius: $height;
+	color: #fff;
+	text-align: center;
+	line-height: $height;
+	font-size: 32upx;
+}
+@mixin cancel-btn($width, $height){
+	width: $width;
+	height: $height;
+	background: #F0F0F0;
+	border-radius: $height;
+	color: #5B5F65;
+	text-align: center;
+	line-height: $height;
+	font-size: 30upx;
+}
+
+
+view,
+scroll-view,
+swiper,
+swiper-item,
+cover-view,
+cover-image,
+icon,
+text,
+rich-text,
+progress,
+button,
+checkbox,
+form,
+input,
+label,
+radio,
+slider,
+switch,
+textarea,
+navigator,
+audio,
+camera,
+image,
+video {
+	box-sizing: border-box;
+}
+/* 骨架屏替代方案 */
+.Skeleton {
+	background: #f3f3f3;
+	padding: 20upx 0;
+	border-radius: 8upx;
+}
+
+/* 图片载入替代方案 */
+.image-wrapper {
+	font-size: 0;
+	background: #f3f3f3;
+	border-radius: 4px;
+
+	image {
+		width: 100%;
+		height: 100%;
+		transition: 0.6s;
+		opacity: 0;
+
+		&.loaded {
+			opacity: 1;
+		}
+	}
+}
+
+.clamp {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+}
+
+.common-hover {
+	background: #f5f5f5;
+}
+
+/*边框*/
+.b-b:after,
+.b-t:after {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	right: 0;
+	height: 0;
+	content: '';
+	transform: scaleY(0.5);
+	border-bottom: 1px solid $border-color-base;
+}
+
+.b-b:after {
+	bottom: 0;
+}
+
+.b-t:after {
+	top: 0;
+}
+
+/* button样式改写 */
+uni-button,
+button {
+	height: 80upx;
+	line-height: 80upx;
+	font-size: $font-lg + 2upx;
+	font-weight: normal;
+
+	&.no-border:before,
+	&.no-border:after {
+		border: 0;
+	}
+}
+
+uni-button[type='default'],
+
+/* input 样式 */
+.input-placeholder {
+	color: #999999;
+}
+
+.placeholder {
+	color: #999999;
+}
+page{
+	background-color: #F8F8F8;
+}
+
+.common-list{
+	padding: 30upx;
+	.item{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 15upx 30upx;
+		background-color: #FFF;
+		border-radius: 15upx;
+		margin-bottom: 30upx;
+		box-shadow: 5upx 5upx 10upx 1upx #DDD;
+		.name{
+			width: 60%;
+			word-break: break-all;
+		}
+		.base-btn{
+			background-color: $base-color;
+			color: #FFF;
+		}
+	}
+}
+
+.common-drawer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-height: 60vh;
+	overflow: auto;
+	.item {
+		width: 95%;
+		margin-bottom: 30upx;
+		padding: 30upx;
+		border: 1px solid #eee;
+		border-radius: 10upx;
+		box-shadow: 5upx 1upx 10upx 1upx #eee;
+		.name{
+			width: 60%;
+			word-break: break-all;
+		}
+		.add{
+			background-color: $base-color;
+			color: #FFF;
+		}
+		.btn{
+			background-color: $base-color;
+			color: #FFF;
+		}
+	}
+	.ok{
+		width: 95%;
+		height: 80upx;
+		font-size: 30upx;
+		color: #FFF;
+		border-radius: 15upx;
+		background-color: $base-color;
+	}
+}
