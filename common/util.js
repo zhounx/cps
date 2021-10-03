@@ -107,7 +107,7 @@ export default {
 					.length)))
 			}
 		}
-		console.log(fmt)
+		// console.log('fmt:', fmt)
 		return fmt
 	},
 	getElSize(selector) { //得到元素的size

@@ -27,6 +27,12 @@
 			"style": {
 				"navigationBarTitleText": "以后行动区"
 			}
+		},
+		{
+			"path": "pages/tabbar/Help",
+			"style": {
+				"navigationBarTitleText": "帮助"
+			}
 		}
 
 	],
@@ -65,6 +71,12 @@
 				"iconPath": "static/home.png",
 				"selectedIconPath": "static/home-active.png",
 				"text": "以后"
+			},
+			{
+				"pagePath": "pages/tabbar/Help",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home-active.png",
+				"text": "帮助"
 			}
 		]
 	}

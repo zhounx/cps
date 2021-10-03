@@ -21,22 +21,27 @@
 		</drawer>
 		<drawer ref="colDrawer">
 			<view class="common-drawer">
-				<view v-for="(item, actionIndex) in actionList" :key="actionIndex" class="item flex flex-center space-between">
-					<text class="name">{{ item.name }}</text>
-					<view class="flex flex-center">
-						<button class="cu-btn" @click="putInLater(actionIndex)" style="margin-right: 20rpx;">Later</button>
-						<button class="cu-btn" @click="handleRemoveAction(actionIndex)"><text class="cuIcon-delete"></text></button>
+				<view class="action-list flex flex-center flex-col justify-center">
+					<view v-for="(item, actionIndex) in actionList" :key="actionIndex" class="item flex flex-center space-between">
+						<text class="name">{{ item.name }}</text>
+						<view class="flex flex-center">
+							<!-- <button class="cu-btn" @click="putInLater(actionIndex)" style="margin-right: 20rpx;">Later</button> -->
+							<button class="cu-btn" @click="handleRemoveAction(actionIndex)"><text class="cuIcon-delete"></text></button>
+						</view>
 					</view>
 				</view>
+				
 				<view class="item flex flex-center space-between">
 					<input placeholder="请输入新行动" name="input" v-model="newActionInput" />
-					<button class="cu-btn add" @click="handleAddAction()">
+					<button class="cu-btn add" @click="addSingleAction()">
 						<text class="cuIcon-add"></text>
 						添加
 					</button>
 				</view>
-
-				<button class="cu-btn ok" @click="dealAll">全部处理</button>
+				<view class="btns flex flex-center space-between">
+					<button class="cu-btn ok" @click="handleAddAction">放入行动区</button>
+					<button class="cu-btn ok later" @click="handleAddLater">放入以后行动区</button>
+				</view>
 			</view>
 		</drawer>
 	</view>
@@ -53,10 +58,29 @@ export default {
 	},
 	onLoad(options) {
 		this.getList('collection');
+		this.getList('action');
+		this.getList('todo');
+		this.getList('later');
+		
+		let flag = uni.getStorageSync('newUser')
+		if(!flag){
+			uni.showModal({
+				title: '欢迎',
+				content: '新用户你好，需要跳转至帮助页面了解产品吗？',
+				confirmColor: '#409be8',
+				success: res => {
+					if (res.confirm) {
+						uni.switchTab({
+							url: './Help'
+						})
+					}
+				}
+			});
+		}
 	},
 	onShow() {},
 	computed: {
-		...mapState(['collectionList']),
+		...mapState(['collectionList', 'actionList', 'laterList']),
 		actionList() {
 			return this.collectionList[this.curColIndex] ? this.collectionList[this.curColIndex].actionList : [];
 		}
@@ -110,7 +134,7 @@ export default {
 			});
 			
 		},
-		handleAddAction() {
+		addSingleAction() {
 			if(!this.newActionInput){
 				uni.showToast({
 					title: '请输入新行动',
@@ -121,9 +145,7 @@ export default {
 			this.addAction({
 				colIndex: this.curColIndex,
 				action: {
-					name: this.newActionInput,
-					execStartTime: 0,
-					execEndTime: 0
+					name: this.newActionInput
 				}
 			});
 			this.newActionInput = ''
@@ -131,16 +153,46 @@ export default {
 				title: '添加成功！'
 			})
 		},
-		dealAll() {
-			let index = this.curColIndex;
-			let col = this.collectionList[index];
+		handleDealCol(type){
+			let msg = `放入${type==='action'?'':'以后'}行动区`
+			let col = this.collectionList[this.curColIndex];
 			if (col.actionList.length) {
+				uni.showModal({
+					title: '提示',
+					content: `确定${msg}吗？`,
+					confirmColor: '#409be8',
+					success: res => {
+						if (res.confirm) {
+							col.actionList.forEach(item=>{
+								this.addItem({
+									name: type,
+									index: this[`${type}List`].length,
+									item
+								})
+							})
+							this.removeItem({
+								name: 'collection',
+								index: this.curColIndex
+							})
+							uni.showToast({
+								title: '放入成功！'
+							})
+							this.$refs.colDrawer.closeModal()
+						}
+					}
+				});
 			} else {
 				uni.showToast({
 					title: '请至少添加一个行动',
 					icon: 'none'
 				});
 			}
+		},
+		handleAddAction() {
+			this.handleDealCol('action')
+		},
+		handleAddLater(){
+			this.handleDealCol('later')
 		},
 		addSubmit() {
 			let input = this.newColionInput;
@@ -174,6 +226,10 @@ export default {
 	height: 100vh;
 	padding-top: 30upx;
 	background-color: $bg-color-base;
+	.common-list{
+		height: 90vh;
+		overflow: auto;
+	}
 	.add-col {
 		width: 690upx;
 		height: 80upx;
@@ -194,6 +250,30 @@ export default {
 			border-radius: 15upx;
 			background-color: $base-color;
 		}
+	}
+	.common-drawer{
+		
+		.action-list{
+			width: 100%;
+			max-height: 55vh;
+			overflow: auto;
+		}
+		.btns{
+			width: 95%;
+			.ok{
+				width: 45%;
+				height: 80upx;
+				font-size: 30upx;
+				color: #FFF;
+				border-radius: 15upx;
+				background-color: $base-color;
+			}
+			.later{
+				background-color: #F0F0F0;
+				color: #000;
+			}
+		}
+		
 	}
 }
 </style>

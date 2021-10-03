@@ -1,26 +1,15 @@
 <template>
 	<view class="container later-container">
+		
 		<view class="common-list">
-			<view v-for="(item, index) in collectionList" :key="index" class="item">
-				<text>{{ item.name }}</text>
-				<button class="cu-btn round base-btn" @click="openColDrawer(index)">处理</button>
+			<view v-for="(item, index) in laterList" :key="index" class="item">
+				<text class="name">{{ item.name }}</text>
+				<view class="flex flex-center">
+					<button class="cu-btn base-btn" @click="backAction(index)" style="margin-right: 20rpx;">还原</button>
+					<button class="cu-btn" @click="deleteCol(index)"><text class="cuIcon-delete"></text></button>
+				</view>
 			</view>
 		</view>
-		<drawer ref="colDrawer">
-			<view class="common-drawer">
-				<view v-for="(item, index) in actionList" :key="index" class="item flex flex-center space-between">
-					<text class="name">{{ item }}</text>
-					<button class="cu-btn" @click="putInLater(index)">Later</button>
-				</view>
-				<view class="item flex flex-center space-between">
-					<input placeholder="请输入新行动" name="input" v-model="newActionInput"></input>
-					<button class="cu-btn add" @click="putInLater(index)"><text class="cuIcon-add"></text>添加</button>
-					
-				</view>
-				
-				<button class="cu-btn ok">全部处理</button>
-			</view>
-		</drawer>
 	</view>
 </template>
 <script>
@@ -28,28 +17,93 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 export default {
 	data() {
 		return {
-			curColIndex: 0,
-			newActionInput: ''
+			curLaterIndex: 0,
 		};
 	},
-	onLoad(options) {},
+	onLoad(options) {
+		// this.getList('collection');
+		// this.getList('action');
+		// this.getList('todo');
+		// this.getList('later');
+	},
 	onShow() {},
 	computed: {
-		...mapState(['collectionList']),
-		actionList() {
-			return this.collectionList[this.curColIndex] ? this.collectionList[this.curColIndex].actionList : [];
-		}
+		...mapState(['collectionList', 'actionList', 'laterList']),
 	},
 	methods: {
-		openColDrawer(index) {
-			this.curColIndex = index;
-			this.$refs.colDrawer.openModal();
+		...mapMutations(['addItem', 'removeItem', 'getList', 'setList', 'addAction', 'removeAction']),
+		deleteCol(index) {
+			uni.showModal({
+				title: '提示',
+				content: '确定要删除吗？',
+				confirmColor: '#409be8',
+				success: res => {
+					if (res.confirm) {
+						this.removeItem({
+							name: 'later',
+							index
+						});
+						uni.showToast({
+							title: '删除成功!'
+						})
+					}
+				}
+			});
 		},
-		putInActionAll(){
-			
+		backAction(index){
+			let action = this.laterList[index]
+			uni.showModal({
+				title: '提示',
+				content: '确定将行动还原至行动区吗？',
+				confirmColor: '#409be8',
+				success: res => {
+					if (res.confirm) {
+						this.addItem({
+							name: 'action',
+							index: 0,
+							item: this.laterList[index]
+						})
+						
+						this.removeItem({
+							name: 'later',
+							index: index
+						})
+						uni.showToast({
+							title: '还原成功！'
+						})
+					}
+				}
+			});
 		},
-		putInLater(index){
-			
+		handleAddAction() {
+			this.handleDealCol('action')
+		},
+		handleAddLater(){
+			this.handleDealCol('later')
+		},
+		addSubmit() {
+			let input = this.newColionInput;
+			if (!input) {
+				uni.showToast({
+					title: '请输入内容',
+					icon: 'none'
+				});
+				return;
+			}
+			this.addItem({
+				name: 'collection',
+				index: 0,
+				item: {
+					name: input,
+					actionList: []
+				}
+			});
+
+			uni.showToast({
+				title: '添加成功!'
+			});
+			this.$refs.addDrawer.closeModal();
+			this.newColionInput = '';
 		}
 	}
 };
@@ -58,5 +112,54 @@ export default {
 .later-container {
 	height: 100vh;
 	background-color: $bg-color-base;
+	.common-list{
+		height: 90vh;
+		overflow: auto;
+	}
+	.add-col {
+		width: 690upx;
+		height: 80upx;
+		background-color: $base-color;
+		color: #fff;
+	}
+	.add-view {
+		height: 415;
+		textarea {
+			height: 300upx;
+		}
+		.ok {
+			width: 100%;
+			height: 80upx;
+			margin-top: 30upx;
+			font-size: 30upx;
+			color: #fff;
+			border-radius: 15upx;
+			background-color: $base-color;
+		}
+	}
+	.common-drawer{
+		
+		.action-list{
+			width: 100%;
+			max-height: 55vh;
+			overflow: auto;
+		}
+		.btns{
+			width: 95%;
+			.ok{
+				width: 45%;
+				height: 80upx;
+				font-size: 30upx;
+				color: #FFF;
+				border-radius: 15upx;
+				background-color: $base-color;
+			}
+			.later{
+				background-color: #F0F0F0;
+				color: #000;
+			}
+		}
+		
+	}
 }
 </style>
